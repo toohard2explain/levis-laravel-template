@@ -45,7 +45,7 @@ class HandleInertiaRequests extends Middleware
                 'original' => $impersonator,
             ],
             'ziggy' => fn () => [
-                ...(new Ziggy)->toArray(),
+                ...(new Ziggy())->toArray(),
                 'location' => $request->url(),
             ],
         ];
