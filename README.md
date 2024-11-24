@@ -1,65 +1,47 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## What's inside?
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+-   <img src="https://svgl.app/library/laravel.svg" width="25" height="11"> Laravel
+-   <img src="https://svgl.app/library/react.svg" width="25" height="11"> React (Interia)
+-   <img src="https://svgl.app/library/phpstorm.svg" width="25" height="11"> JetBrains IDE Config
+-   <img src="https://exiz.org/images/logo/eslint.svg" width="25" height="11"> EsLint Config
+-   <img src="https://svgl.app/library/tailwindcss.svg" width="25" height="11"> TailwindCSS
+-   <img src="https://svgl.app/library/shadcn-ui.svg" width="25" height="11"> shadcn-ui
+-   <img src="https://svgl.app/library/prettier-icon-light.svg" width="25" height="11"> Prettier
+-   <img src="https://laravel.com/img/ecosystem/pint.min.svg" width="25" height="11"> Pint
+-   <img src="https://avatars.githubusercontent.com/u/7535935?s=280&v=4" width="25" height="11"> Spatie laravel-permission
+-   <img src="https://avatars.githubusercontent.com/u/22891715?s=200&v=4" width="25" height="11"> 404lab laravel-impersonate
 
-## About Laravel
+& Better File structure for the typescript project. Located in `resources/js` folder.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## How to use?
 
--   [Simple, fast routing engine](https://laravel.com/docs/routing).
--   [Powerful dependency injection container](https://laravel.com/docs/container).
--   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
--   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
--   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
--   [Robust background job processing](https://laravel.com/docs/queues).
--   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Clone this repository `git clone git@github.com:toohard2explain/levis-laravel-template.git`
+2. Duplicate `.env.example` file and rename it to `.env` and fill in the necessary information.
+3. Run `composer install` and `npm install` to install the necessary packages.
+4. Run `php artisan key:generate` to generate the application key.
+5. Run `php artisan migrate` to migrate the database.
+6. Run `npm run dev` to compile the assets.
+7. Run `php artisan serve` to start the server.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+We would recommend to use [Laravel Herd](https://herd.laravel.com) for the development environment.
 
-## Learning Laravel
+## Models in Typescript
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Unfortunately you have to create them manual but it's easier due to our new file structure and extensions.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Create a new file in `resources/js/types/models` folder.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```ts
+import { Identifiable, Model } from "@/types";
 
-## Laravel Sponsors
+export interface User extends Model, Identifiable {
+    name: string;
+    email: string;
+    email_verified_at?: string;
+}
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
--   **[Vehikl](https://vehikl.com/)**
--   **[Tighten Co.](https://tighten.co)**
--   **[WebReinvent](https://webreinvent.com/)**
--   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
--   **[64 Robots](https://64robots.com)**
--   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
--   **[Cyber-Duck](https://cyber-duck.co.uk)**
--   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
--   **[Jump24](https://jump24.co.uk)**
--   **[Redberry](https://redberry.international/laravel/)**
--   **[Active Logic](https://activelogic.com)**
--   **[byte5](https://byte5.de)**
--   **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+The `Model` interface is for the `created_at` and `updated_at` fields. The `Identifiable` interface is for the `id` field.
 
 ## License
 
