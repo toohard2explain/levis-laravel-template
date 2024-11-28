@@ -1,3 +1,4 @@
+import { Permission, Role } from "@/types/models/permissions";
 import { User } from "@/types/models/user";
 import { Config } from "ziggy-js";
 
@@ -19,6 +20,13 @@ export interface Impersonate {
     original?: User;
 }
 
+export interface Permissions {
+    roles: Role[];
+    permissions: string[];
+    allRoles: Role[];
+    allPermissions: Permission[];
+}
+
 export interface ZiggyConfig extends Config {
     location: string;
 }
@@ -28,5 +36,6 @@ export type PageProps<
 > = T & {
     auth: Auth;
     impersonate: Impersonate;
+    permissions: Permissions;
     ziggy: ZiggyConfig;
 };
