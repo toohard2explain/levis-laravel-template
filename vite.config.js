@@ -11,10 +11,4 @@ export default defineConfig({
         }),
         react(),
     ],
-    resolve: {
-        alias: {
-            "@laravel-inertia-permissions":
-                "vendor/wijzijnweb/laravel-inertia-permissions/resources/js",
-        },
-    },
 });
