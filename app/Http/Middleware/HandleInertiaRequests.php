@@ -52,8 +52,8 @@ class HandleInertiaRequests extends Middleware
                     return $role;
                 }),
                 'allPermissions' => Permission::all(),
-                'roles' => $request->user()->roles,
-                'permissions' => $request->user()->permissions->pluck('name'),
+                'roles' => $request->user() ? $request->user()->roles : null,
+                'permissions' => $request->user() ? $request->user()->permissions->pluck('name') : null,
             ],
             'ziggy' => fn () => [
                 ...(new Ziggy())->toArray(),

@@ -21,8 +21,8 @@ export interface Impersonate {
 }
 
 export interface Permissions {
-    roles: Role[];
-    permissions: string[];
+    roles?: Role[];
+    permissions?: string[];
     allRoles: Role[];
     allPermissions: Permission[];
 }

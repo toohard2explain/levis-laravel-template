@@ -3,8 +3,23 @@ import { usePage } from "@inertiajs/react";
 export default function usePermissions() {
     const { permissions } = usePage().props;
 
+    if (!permissions.permissions || !permissions.roles) {
+        return {
+            permissions: {
+                roles: [],
+                permissions: [],
+                allRoles: [],
+                allPermissions: [],
+            },
+            can: () => false,
+            cannot: () => true,
+            is: () => false,
+            isNot: () => true,
+        };
+    }
+
     const can = (permission: string) => {
-        return permissions.permissions.includes(permission);
+        return permissions.permissions!.includes(permission);
     };
 
     const cannot = (permission: string) => {
@@ -12,7 +27,7 @@ export default function usePermissions() {
     };
 
     const is = (role: string) => {
-        return permissions.roles.some((r) => r.name === role);
+        return permissions.roles!.some((r) => r.name === role);
     };
 
     const isNot = (role: string) => {
