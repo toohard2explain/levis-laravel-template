@@ -3,9 +3,13 @@
     "type": "module",
     "scripts": {
         "build": "tsc && vite build && vite build --ssr",
-        "dev": "vite",
+        "vite:dev": "vite",
         "lint": "eslint resources/js --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix",
-        "format": "prettier --write ."
+        "format": "npm run vite:format && npm run php:format",
+        "vite:format": "prettier --write .",
+        "php:format": "./vendor/bin/pint",
+        "php:serve": "php artisan serve",
+        "dev": "concurrently -k -p \"[{name}]\" -c \"blue.bold,green.bold,red.bold\" \"npm:php:serve\" \"npm:vite:dev\""
     },
     "devDependencies": {
         "@headlessui/react": "^2.0.0",
@@ -18,7 +22,7 @@
         "@typescript-eslint/parser": "^7.16.0",
         "@vitejs/plugin-react": "^4.2.0",
         "autoprefixer": "^10.4.12",
-        "axios": "^1.7.4",
+        "axios": "1.7.8",
         "concurrently": "^9.0.1",
         "eslint": "^8.57.0",
         "eslint-config-prettier": "^9.1.0",

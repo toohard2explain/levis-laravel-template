@@ -49,6 +49,7 @@ class HandleInertiaRequests extends Middleware
             'permissions' => [
                 'allRoles' => Role::all()->map(function ($role) {
                     $role->permissions = $role->permissions()->pluck('name');
+
                     return $role;
                 }),
                 'allPermissions' => Permission::all(),
